@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">/* Global Styles */
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #4fc3f7;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: var(--dark-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+nav ul li {
+    padding: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.auth-buttons {
+    margin-left: auto;
+}
+
+.auth-buttons button {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.auth-buttons button:hover {
+    opacity: 0.9;
+}
+
+#loginBtn {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+#registerBtn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Main Content Styles */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Search Box Styles */
+.search-box {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.search-box select, .search-box button {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-box select {
+    flex: 1;
+    min-width: 200px;
+}
+
+#searchBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchBtn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Services Styles */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+/* Listings Styles */
+.listings-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.listing-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.listing-image {
+    height: 200px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.listing-details {
+    padding: 1.5rem;
+}
+
+.listing-details h3 {
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.listing-details p {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.listing-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.listing-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.listing-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-details {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.contact-owner {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Contact Form Styles */
+#contactForm {
+    max-width: 600px;
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalopen 0.3s;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .auth-buttons {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+    }
+    
+    .auth-buttons button {
+        flex: 1;
+    }
+    
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .search-box select, .search-box button {
+        width: 100%;
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideIn 0.3s, fadeOut 0.5s 2.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.notification.success {
+    background-color: var(--success-color);
+}
+
+.notification.error {
+    background-color: var(--danger-color);
+}
+
+.notification.warning {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basha & Office Bodol Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Basha & Office Bodol</h1>
+            <p>Find your perfect house or office exchange</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#listings">Listings</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="auth-buttons">
+                    <button id="loginBtn">Login</button>
+                    <button id="registerBtn">Register</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="home">
+            <h2>Welcome to Basha & Office Bodol Service</h2>
+            <p>Find the perfect exchange for your house or office in Bangladesh.</p>
+            <div class="search-box">
+                <select id="propertyType">
+                    <option value="">Select Property Type</option>
+                    <option value="house">House</option>
+                    <option value="office">Office</option>
+                    <option value="apartment">Apartment</option>
+                </select>
+                <select id="location">
+                    <option value="">Select Location</option>
+                    <option value="dhaka">Dhaka</option>
+                    <option value="chittagong">Chittagong</option>
+                    <option value="sylhet">Sylhet</option>
+                    <option value="khulna">Khulna</option>
+                </select>
+                <button id="searchBtn">Search</button>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>House Exchange</h3>
+                    <p>Find your perfect house exchange in your desired location.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Office Exchange</h3>
+                    <p>Exchange your office space with others in convenient locations.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Property Search</h3>
+                    <p>Search for properties based on your specific needs.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Negotiation Support</h3>
+                    <p>Get professional support for successful negotiations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="listings">
+            <h2>Recent Listings</h2>
+            <div class="listings-container" id="listingsContainer">
+                <!-- Listings will be loaded here via JavaScript -->
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Basha & Office Bodol Service is the leading platform for property exchange in Bangladesh. We connect people who want to exchange their houses or offices without the hassle of traditional buying and selling.</p>
+            <p>Our mission is to make property exchange simple, secure, and convenient for everyone.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regName">Full Name:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Phone:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password:</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Basha & Office Bodol Service. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}">document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
+    const closeButtons = document.querySelectorAll('.close');
+    const searchBtn = document.getElementById('searchBtn');
+    const listingsContainer = document.getElementById('listingsContainer');
+    const contactForm = document.getElementById('contactForm');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    
+    // Sample listings data (in a real app, this would come from the backend)
+    const sampleListings = [
+    {
+    id: 1,
+    title: "Spacious Apartment in Dhaka",
+    type: "apartment",
+    location: "dhaka",
+    description: "Beautiful 3-bedroom apartment in Gulshan with modern amenities.",
+    price: "Exchange for similar value property",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+    id: 2,
+    title: "Commercial Office in Chittagong",
+    type: "office",
+    location: "chittagong",
+    description: "1200 sqft office space in commercial area, ready to move in.",
+    price: "Exchange for residential property",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+    id: 3,
+    title: "Family House in Sylhet",
+    type: "house",
+    location: "sylhet",
+    description: "4-bedroom house with garden in quiet neighborhood.",
+    price: "Looking for Dhaka property",
+    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+    id: 4,
+    title: "Modern Office Space in Dhaka",
+    type: "office",
+    location: "dhaka",
+    description: "Fully furnished office in Banani with parking facilities.",
+    price: "Exchange for similar commercial space",
+    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    }
+    ];
+    
+    // Modal Functions
+    function openModal(modal) {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+    
+    // Event Listeners
+    loginBtn.addEventListener('click', () => openModal(loginModal));
+    registerBtn.addEventListener('click', () => openModal(registerModal));
+    
+    closeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+    const modal = this.closest('.modal');
+    closeModal(modal);
+    });
+    });
+    
+    window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+    closeModal(event.target);
+    }
+    });
+    
+    // Display Listings
+    function displayListings(listings) {
+    listingsContainer.innerHTML = '';
+    
+    if (listings.length === 0) {
+    listingsContainer.innerHTML = '<p>No listings found. Please try different search criteria.</p>';
+    return;
+    }
+    
+    listings.forEach(listing => {
+    const listingCard = document.createElement('div');
+    listingCard.className = 'listing-card';
+    
+    listingCard.innerHTML = `
+    <div class="listing-image" style="background-image: url('${listing.image}')"></div>
+    <div class="listing-details">
+    <h3>${listing.title}</h3>
+    <p><i class="fas fa-map-marker-alt"></i> ${capitalizeFirstLetter(listing.location)}</p>
+    <p><i class="fas fa-home"></i> ${capitalizeFirstLetter(listing.type)}</p>
+    <p>${listing.description}</p>
+    <div class="listing-price">${listing.price}</div>
+    <div class="listing-actions">
+    <button class="view-details" data-id="${listing.id}">View Details</button>
+    <button class="contact-owner" data-id="${listing.id}">Contact Owner</button>
+    </div>
+    </div>
+    `;
+    
+    listingsContainer.appendChild(listingCard);
+    });
+    
+    // Add event listeners to the new buttons
+    document.querySelectorAll('.view-details').forEach(button => {
+    button.addEventListener('click', function() {
+    const listingId = this.getAttribute('data-id');
+    viewListingDetails(listingId);
+    });
+    });
+    
+    document.querySelectorAll('.contact-owner').forEach(button => {
+    button.addEventListener('click', function() {
+    const listingId = this.getAttribute('data-id');
+    contactOwner(listingId);
+    });
+    });
+    }
+    
+    // Search Functionality
+    searchBtn.addEventListener('click', function() {
+    const propertyType = document.getElementById('propertyType').value;
+    const location = document.getElementById('location').value;
+    
+    let filteredListings = sampleListings;
+    
+    if (propertyType) {
+    filteredListings = filteredListings.filter(listing => listing.type === propertyType);
+    }
+    
+    if (location) {
+    filteredListings = filteredListings.filter(listing => listing.location === location);
+    }
+    
+    displayListings(filteredListings);
+    });
+    
+    // Form Submissions
+    contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    // In a real app, you would send this data to the server
+    console.log('Contact form submitted:', { name, email, message });
+    
+    showNotification('Your message has been sent successfully!', 'success');
+    this.reset();
+    });
+    
+    loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    // In a real app, you would validate and send this to the server
+    console.log('Login attempt:', { email, password });
+    
+    showNotification('Login successful!', 'success');
+    closeModal(loginModal);
+    this.reset();
+    });
+    
+    registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('regName').value;
+    const email = document.getElementById('regEmail').value;
+    const phone = document.getElementById('regPhone').value;
+    const password = document.getElementById('regPassword').value;
+    const confirmPassword = document.getElementById('regConfirmPassword').value;
+    
+    if (password !== confirmPassword) {
+    showNotification('Passwords do not match!', 'error');
+    return;
+    }
+    
+    // In a real app, you would send this data to the server
+    console.log('Registration data:', { name, email, phone, password });
+    
+    showNotification('Registration successful! Please login.', 'success');
+    closeModal(registerModal);
+    this.reset();
+    });
+    
+    // Helper Functions
+    function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    
+    function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+    notification.remove();
+    }, 3000);
+    }
+    
+    function viewListingDetails(id) {
+    const listing = sampleListings.find(item => item.id === parseInt(id));
+    if (listing) {
+    alert(`Details for: ${listing.title}\n\nType: ${capitalizeFirstLetter(listing.type)}\nLocation: ${capitalizeFirstLetter(listing.location)}\n\n${listing.description}\n\n${listing.price}`);
+    }
+    }
+    
+    function contactOwner(id) {
+    const listing = sampleListings.find(item => item.id === parseInt(id));
+    if (listing) {
+    alert(`Contact form for: ${listing.title}\n\nPlease use our contact form or call our hotline to get in touch with the owner.`);
+    }
+    }
+    
+    // Initialize the page with all listings
+    displayListings(sampleListings);
+    });</script>
+</body>
+</html>
